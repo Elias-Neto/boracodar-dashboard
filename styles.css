@@ -1,0 +1,38 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem;
+  font-family: "Inter", sans-serif;
+
+  background-color: #292738;
+}
+
+main {
+  height: 100vh;
+  width: 100vw;
+  /* padding: 12rem; */
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 6rem;
+}
+
+.card-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 3.2rem;
+}
+
+.card {
+  background-color: #363447;
+}
