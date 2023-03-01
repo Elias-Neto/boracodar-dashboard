@@ -11,14 +11,16 @@
 body {
   font-size: 1.6rem;
   font-family: "Inter", sans-serif;
+  color: #fff;
+  font-weight: 500;
 
   background-color: #292738;
 }
 
 main {
   height: 100vh;
-  width: 100vw;
-  /* padding: 12rem; */
+  max-width: 120rem;
+  margin: auto;
 
   display: flex;
   align-items: center;
@@ -31,8 +33,187 @@ main {
   display: flex;
   align-items: center;
   gap: 3.2rem;
+  width: 100%;
 }
 
 .card {
   background-color: #363447;
+  padding-block: 3rem;
+  padding-inline: 4.8rem;
+  border-radius: 1.6rem;
+  box-shadow: 3px 4px 26px rgba(0, 0, 0, 0.25);
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3.2rem;
+}
+
+.card h2 {
+  font-size: 2.4rem;
+  font-weight: 600;
+}
+
+.card .content {
+  height: 20rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.content .number {
+  font-weight: 700;
+  font-size: 3.4rem;
+}
+
+.card span {
+  font-weight: 400;
+}
+
+.general-nps .content {
+  gap: 1.6rem;
+  width: 20rem;
+}
+
+.general-nps .content span {
+  font-size: 2.4rem;
+  font-weight: 600;
+  color: #81fbb8;
+}
+
+.general-nps footer {
+  display: flex;
+  gap: 1rem;
+}
+
+.closed-sales .content,
+.month-goal .content {
+  border-radius: 50%;
+  border: 2rem solid #fff;
+  width: 20rem;
+}
+
+.closed-sales footer,
+.month-goal footer {
+  display: flex;
+  gap: 2rem;
+}
+
+.ball-with-text {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.closed-sales footer div,
+.month-goal footer div {
+  display: flex;
+  gap: 1rem;
+}
+
+.closed-sales footer div .ball,
+.month-goal footer div .ball {
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: #fff;
+  border-radius: 50%;
+}
+
+.sales-per-day {
+  width: 100%;
+
+  flex-direction: row;
+  justify-content: space-around;
+  gap: 3.2rem;
+
+  position: relative;
+}
+
+.sales-per-day .text-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem;
+}
+
+.sales-per-day .text-wrapper div {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.sales-per-day .text-wrapper div .description {
+  font-size: 1.4rem;
+}
+
+.sales-per-day .text-wrapper div span {
+  font-size: 2.4rem;
+}
+
+.sales-per-day .text-wrapper div .triangle-text {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.triangle {
+  width: 0;
+  height: 0;
+  border-left: 0.5rem solid transparent;
+  border-right: 0.5rem solid transparent;
+}
+
+.triangle.top {
+  border-bottom: 1rem solid #81fbb8;
+}
+
+.triangle.down {
+  border-top: 1rem solid #ea5455;
+}
+
+.graphic {
+  display: flex;
+  gap: 6rem;
+
+  height: 100%;
+}
+
+.graphic::before {
+  display: block;
+
+  content: "";
+
+  width: 53rem;
+  height: 0.3rem;
+  background-color: #4a4556;
+  border-radius: 99rem;
+
+  position: absolute;
+  top: 50%;
+}
+
+.graphic .column-wrapper {
+  align-self: flex-end;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+
+  z-index: 99;
+}
+
+.graphic .column-wrapper div {
+  height: 15rem;
+  width: 1.5rem;
+  border-radius: 99rem;
+  background: linear-gradient(180deg, #90f7ec 0%, #32ccbc 100%);
+}
+
+.graphic .column-wrapper span {
+  font-size: 1.4rem;
 }
