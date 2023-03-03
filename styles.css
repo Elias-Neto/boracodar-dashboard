@@ -2,6 +2,9 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 :root {
@@ -17,203 +20,261 @@ body {
   background-color: #292738;
 }
 
-main {
-  height: 100vh;
-  max-width: 120rem;
+.grid {
+  display: grid;
+}
+
+.text-center {
+  text-align: center;
+}
+
+#App {
+  column-gap: 3.2rem;
+
+  /* width: fit-content; */
+  min-height: 100vh;
+  height: fit-content;
+
   margin: auto;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 6rem;
+  place-content: center;
+  padding: 3.2rem;
 }
 
-.card-wrapper {
-  display: flex;
-  align-items: center;
+.box {
   gap: 3.2rem;
-  width: 100%;
-}
 
-.card {
-  background-color: #363447;
-  padding-block: 3rem;
-  padding-inline: 4.8rem;
+  padding: 2.9rem 4.8rem;
+  background: #363447;
+  box-shadow: 0.3rem 0.4rem 2.6rem rgba(0, 0, 0, 0.25);
   border-radius: 1.6rem;
-  box-shadow: 3px 4px 26px rgba(0, 0, 0, 0.25);
-  width: 100%;
 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 3.2rem;
+  line-height: 160%;
 }
 
-.card h2 {
-  font-size: 2.4rem;
+.top {
   font-weight: 600;
+  font-size: 2.4rem;
 }
 
-.card .content {
-  height: 20rem;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+.middle {
+  place-content: center;
+  position: relative;
 }
 
-.content .number {
-  font-weight: 700;
+.middle .content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  text-align: center;
+}
+
+.middle h3 {
   font-size: 3.4rem;
 }
 
-.card span {
-  font-weight: 400;
+.bottom {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+
+  font-weight: 500;
+  font-size: 1.4rem;
+
+  margin-top: auto;
 }
 
-.general-nps .content {
+.bottom .item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.bottom .item span {
+  --bg-color: #4a4556;
+}
+
+.bottom .item span:nth-child(1) {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.bottom .item span:nth-child(1)::before {
+  content: "";
+  width: 1.5rem;
+  height: 1.5rem;
+  display: block;
+  background: var(--bg-color);
+  border-radius: 999px;
+}
+
+.nps .middle {
+  height: 19.7rem;
+  justify-items: center;
   gap: 1.6rem;
-  width: 20rem;
-}
-
-.general-nps .content span {
-  font-size: 2.4rem;
-  font-weight: 600;
   color: #81fbb8;
 }
 
-.general-nps footer {
-  display: flex;
+.nps .bottom {
   gap: 1rem;
 }
 
-.closed-sales .content,
-.month-goal .content {
-  border-radius: 50%;
-  border: 2rem solid #fff;
-  width: 20rem;
+.sell svg,
+.goal svg {
+  --percentage: 0;
+  width: 19.7rem;
+  height: 19.7rem;
+  transform: rotate(-90deg);
 }
 
-.closed-sales footer,
-.month-goal footer {
+svg circle {
+  stroke-dasharray: 618;
+  stroke-dashoffset: 618;
+  stroke-width: 35;
+  fill: none;
+}
+
+svg circle:nth-child(1) {
+  stroke-dashoffset: 0;
+}
+
+svg circle:nth-child(2) {
+  stroke-dashoffset: calc(618 - (618 * var(--percentage)) / 100);
+  stroke-linecap: round;
+
+  animation: progress 1s ease-in-out;
+}
+
+@keyframes progress {
+  0% {
+    stroke-dasharray: 618;
+    stroke-dashoffset: 618;
+  }
+}
+
+.weekly-sell {
+  padding: 1.5rem 2.4rem;
+}
+
+.weekly-sell .wrapper {
   display: flex;
-  gap: 2rem;
+  flex-direction: column;
+  gap: 3.2rem;
 }
 
-.ball-with-text {
+.weekly-sell .left {
+  gap: 3.2rem;
+  grid-auto-flow: column;
+}
+
+.weekly-sell .left,
+.weekly-sell .right {
+  flex: 1;
+}
+
+.left .grid {
+  gap: 0.8rem;
+
+  font-weight: 500;
+  font-size: 2.4rem;
+}
+
+.left .grid span {
+  font-size: 1.4rem;
+
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  align-self: flex-start;
+  gap: 0.4rem;
 }
 
-.closed-sales footer div,
-.month-goal footer div {
-  display: flex;
-  gap: 1rem;
-}
-
-.closed-sales footer div .ball,
-.month-goal footer div .ball {
+.left .grid span::before {
+  content: "";
   width: 1.5rem;
   height: 1.5rem;
-  background-color: #fff;
-  border-radius: 50%;
+  display: block;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
 }
 
-.sales-per-day {
-  width: 100%;
+.left .most-sell span::before {
+  background: linear-gradient(180deg, #81fbb8 0%, #28c76f 100%);
+  margin-top: 0.4rem;
+}
 
-  flex-direction: row;
-  justify-content: space-around;
-  gap: 3.2rem;
+.left .less-sell span::before {
+  background: linear-gradient(180deg, #ea5455 0%, #feb692 100%);
+  transform: matrix(1, 0, 0, -1, 0, 0);
+  margin-top: 0.6rem;
+}
+
+.bars {
+  display: flex;
+  gap: calc(3vw + 1rem);
+  align-items: flex-end;
 
   position: relative;
 }
 
-.sales-per-day .text-wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 3.2rem;
-}
-
-.sales-per-day .text-wrapper div {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.sales-per-day .text-wrapper div .description {
-  font-size: 1.4rem;
-}
-
-.sales-per-day .text-wrapper div span {
-  font-size: 2.4rem;
-}
-
-.sales-per-day .text-wrapper div .triangle-text {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.triangle {
-  width: 0;
-  height: 0;
-  border-left: 0.5rem solid transparent;
-  border-right: 0.5rem solid transparent;
-}
-
-.triangle.top {
-  border-bottom: 1rem solid #81fbb8;
-}
-
-.triangle.down {
-  border-top: 1rem solid #ea5455;
-}
-
-.graphic {
-  display: flex;
-  gap: 6rem;
-
-  height: 100%;
-}
-
-.graphic::before {
-  display: block;
-
+.bars::before {
   content: "";
-
-  width: 53rem;
   height: 0.3rem;
-  background-color: #4a4556;
-  border-radius: 99rem;
+  width: 100%;
+  background: #4a4556;
+  border-radius: 999px;
+
+  display: block;
 
   position: absolute;
   top: 50%;
+  transform: translateY(-50%);
+  z-index: -1;
 }
 
-.graphic .column-wrapper {
-  align-self: flex-end;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.bar-wrapper {
+  grid-template-rows: 15.9rem 1.6rem;
+  justify-items: center;
   gap: 0.5rem;
-
-  z-index: 99;
 }
 
-.graphic .column-wrapper div {
-  height: 15rem;
+.bar {
   width: 1.5rem;
-  border-radius: 99rem;
   background: linear-gradient(180deg, #90f7ec 0%, #32ccbc 100%);
+  border-radius: 999px;
+  height: var(--height);
+  align-self: end;
+  animation: up 1.4s;
 }
 
-.graphic .column-wrapper span {
-  font-size: 1.4rem;
+@keyframes up {
+  0% {
+    height: 0;
+  }
+}
+
+@media (min-width: 768px) {
+  #App {
+    grid-template-columns: 26.6rem max-content max-content;
+    grid-template-rows: max-content;
+    row-gap: 5.9rem;
+  }
+
+  .box:nth-child(4) {
+    grid-column: 1/4;
+    padding: 2.9rem 4.8rem;
+  }
+
+  .weekly-sell .wrapper {
+    flex-direction: row;
+  }
+
+  .weekly-sell .left {
+    grid-auto-flow: initial;
+  }
+
+  .bars {
+    gap: 5.9rem;
+  }
 }
