@@ -12,6 +12,8 @@
 
 ## 💻 Projeto
 
+Layout de um dashboard com dados de NPS e Vendas de uma loja fictícia.
+
 Esse desafio foi proposto pelo [#boraCodar](https://www.rocketseat.com.br/boracodar) da [Rocketseat](https://www.rocketseat.com.br/).
 
 <br>
